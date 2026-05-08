@@ -171,7 +171,7 @@ input.addEventListener("keyup", () => {
 
 
 
-type.addEventListener("change", () => {
+type.addEventListener("change", (e) => {
 
     const selectedType = type.value;
 
@@ -187,11 +187,19 @@ type.addEventListener("change", () => {
         return obj.types.some((item) => {
 
             return item.type.name === selectedType;
-
+            
         });
-
+       
     });
 
+
+    if(filteredPokemon.length === 0){
+        alert("Pokemon not found!!");
+        showData(displayPokemon);
+        e.target.value = "all"
+        return;
+    }
     showData(filteredPokemon);
+    // console.log(filteredPokemon)
 
 });
